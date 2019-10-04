@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		#capa  {
+			width: 200px;
+			height: 200px;			
+		}
+		.clase {background-color: grey;}
+
+		select option[value="amarillo"] {background-color: yellow;}
+		select option[value="verde"] {background-color: green;}
+		select option[value="azul"] {background-color: blue;}	
+
+		.amarillo {background-color: yellow;}
+		.verde {background-color: green;}
+		.azul {background-color: blue;}	
+
+	</style>
+	<script type="text/javascript">
+		//variable con el color anteriormente escogido
+		var colorAnterior='';
+		window.onload = function() {
+			//activar un listener sobre todo el documento
+			document.getElementById('combo').addEventListener('change', function () {onchangef()});
+		}	
+		function onchangef() {
+			//selecciona el value
+			//var combo = document.getElementById('combo').value;
+			var combo = document.getElementById('combo').value;
+			var capa = document.getElementById('capa');
+			//quitar la clase que corresponda con el color anteriormente seleccionado
+			//quitando - poniendo clases
+			if (colorAnterior != '') {
+				document.getElementById('capa').classList.remove(colorAnterior);
+			}
+			//se coge el value del combo y se crea una clase del mismo tipo 
+			capa.classList.add(combo);
+			colorAnterior=combo;
+			//capa.style.backgroundColor = combo.value;
+			//valido cuando usamos la opcion .value
+			//document.getElementById('capa').style.backgroundColor = combo;
+		}
+	</script>
+</head>
+<body>
+	<div id="capa" class="clase" ></div>
+	<select id="combo" name="combo"  required>
+									<option disabled selected>Seleccione color</option>
+					  				<option value="amarillo">Amarillo</option>
+					  				<option value="verde">Verde</option>
+					  				<option value="azul">Azul</option>			  				
+		 	</select>
+</body>
+</html>
